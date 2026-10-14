@@ -1,0 +1,509 @@
+:root {
+    --primary: #087f8c;
+    --primary-dark: #066773;
+    --success: #0f766e;
+    --background: #f1f5f9;
+    --white: #ffffff;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --danger: #be123c;
+    --warning-bg: #fef3c7;
+    --warning-text: #92400e;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.5;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+    transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid #99f6e4;
+    outline-offset: 2px;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.container {
+    width: min(1120px, 100% - 32px);
+    margin: 0 auto;
+}
+
+/* Cabeçalho */
+.header {
+    background: var(--primary);
+    color: var(--white);
+    padding: 25px 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.header h1 {
+    font-size: 30px;
+    line-height: 1.2;
+    margin-bottom: 5px;
+}
+
+.header p {
+    opacity: 0.9;
+}
+
+.date-box {
+    text-align: right;
+    display: grid;
+    gap: 4px;
+}
+
+.date-box span {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.date-box strong {
+    font-size: 15px;
+}
+
+/* Indicadores principais */
+.metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.metric-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.metric-card span {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.metric-card strong {
+    font-size: 32px;
+    color: var(--success);
+}
+
+.metric-card small {
+    color: var(--muted);
+}
+
+/* Painéis e layout */
+.main-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    align-items: start;
+}
+
+.panel {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px;
+    margin-bottom: 20px;
+    min-width: 0;
+}
+
+.panel h2,
+.admin-actions h2 {
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+.section-description {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.section-heading h2,
+.section-heading h3 {
+    margin-bottom: 0;
+}
+
+.section-heading h3 {
+    font-size: 16px;
+}
+
+/* Formulário */
+.form-group {
+    margin-bottom: 17px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 9px;
+    background: white;
+    color: var(--text);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--primary);
+}
+
+.message {
+    min-height: 20px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--success);
+}
+
+.message.error {
+    color: var(--danger);
+}
+
+.privacy-notice {
+    padding: 12px;
+    border: 1px solid #fde68a;
+    border-radius: 9px;
+    background: #fffbeb;
+    color: #92400e;
+    font-size: 12px;
+    margin-top: 14px;
+}
+
+/* Botões */
+.btn {
+    border: none;
+    border-radius: 9px;
+    padding: 11px 15px;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn-success {
+    background: var(--success);
+    color: white;
+}
+
+.btn-secondary {
+    background: #e2e8f0;
+    color: #334155;
+}
+
+.btn-danger {
+    background: #fff1f2;
+    color: var(--danger);
+}
+
+.btn-call {
+    background: var(--success);
+    color: white;
+    padding: 15px;
+    font-size: 14px;
+    margin-bottom: 22px;
+}
+
+.btn-call:hover {
+    background: #115e59;
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* Paciente em atendimento */
+.current-patient {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 18px;
+}
+
+.eyebrow {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.current-patient h3 {
+    font-size: 21px;
+    color: #065f46;
+    margin: 8px 0;
+    overflow-wrap: anywhere;
+}
+
+.current-patient p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.current-patient button[hidden] {
+    display: none;
+}
+
+/* Lista de pacientes */
+.counter {
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+.patient-list {
+    margin-top: 10px;
+}
+
+.patient-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.patient-item:last-child {
+    border-bottom: none;
+}
+
+.patient-info {
+    min-width: 0;
+}
+
+.patient-name {
+    font-weight: 700;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.patient-type {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.status {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 8px;
+    border-radius: 20px;
+    margin-top: 7px;
+}
+
+.status-waiting {
+    background: var(--warning-bg);
+    color: var(--warning-text);
+}
+
+.status-active {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.status-finished {
+    background: #e2e8f0;
+    color: #475569;
+}
+
+.patient-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+.btn-small {
+    font-size: 11px;
+    padding: 7px 9px;
+    background: #f1f5f9;
+    color: #334155;
+}
+
+.empty-state {
+    border: 1px dashed #cbd5e1;
+    border-radius: 10px;
+    padding: 25px 12px;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+/* Indicadores por categoria */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.category-card {
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #f8fafc;
+}
+
+.category-card strong {
+    display: block;
+    color: var(--success);
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.category-card span {
+    color: var(--muted);
+    font-size: 12px;
+    overflow-wrap: anywhere;
+}
+
+/* Administração e rodapé */
+.admin-actions {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.admin-actions p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+footer {
+    padding: 20px 0 30px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+footer p + p {
+    margin-top: 5px;
+}
+
+/* Responsividade */
+@media (max-width: 760px) {
+    .container {
+        width: calc(100% - 24px);
+    }
+
+    .header-content {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .date-box {
+        text-align: left;
+    }
+
+    .metrics {
+        gap: 8px;
+    }
+
+    .metric-card {
+        padding: 12px;
+    }
+
+    .metric-card span {
+        font-size: 11px;
+    }
+
+    .metric-card strong {
+        font-size: 25px;
+    }
+
+    .main-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .panel {
+        padding: 17px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .admin-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .admin-actions button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 380px) {
+    .metrics {
+        grid-template-columns: 1fr;
+    }
+
+    .patient-item {
+        align-items: flex-start;
+    }
+}

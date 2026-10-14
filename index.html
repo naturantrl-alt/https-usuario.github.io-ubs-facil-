@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistema demonstrativo de gerenciamento de atendimento em UBS">
+    <title>UBS Fácil | Gestão de Atendimento</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <div>
+                <h1>UBS Fácil</h1>
+                <p>Sistema de Gerenciamento de Atendimento</p>
+            </div>
+            <div class="date-box">
+                <span>Data de hoje</span>
+                <strong id="current-date">--/--/----</strong>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Indicadores -->
+        <section class="metrics" aria-label="Indicadores do dia">
+            <article class="metric-card">
+                <span>Atendimentos finalizados</span>
+                <strong id="total-attended">0</strong>
+                <small>Total do dia</small>
+            </article>
+
+            <article class="metric-card">
+                <span>Fila de espera</span>
+                <strong id="total-waiting">0</strong>
+                <small>Pacientes aguardando</small>
+            </article>
+
+            <article class="metric-card">
+                <span>Em atendimento</span>
+                <strong id="total-active">0</strong>
+                <small>Paciente chamado</small>
+            </article>
+        </section>
+
+        <div class="main-grid">
+            <!-- Recepção -->
+            <section class="panel">
+                <h2>Cadastro de paciente</h2>
+                <p class="section-description">
+                    Preencha os dados para adicionar à fila.
+                </p>
+
+                <form id="patient-form">
+                    <div class="form-group">
+                        <label for="patient-name">Nome do paciente *</label>
+                        <input
+                            type="text"
+                            id="patient-name"
+                            maxlength="100"
+                            placeholder="Digite o nome do paciente"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="patient-document">
+                            Cartão SUS ou CPF
+                        </label>
+                        <input
+                            type="text"
+                            id="patient-document"
+                            maxlength="18"
+                            placeholder="Documento fictício (opcional)"
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service-type">Tipo de atendimento *</label>
+                        <select id="service-type" required>
+                            <option value="Triagem">Triagem</option>
+                            <option value="Consulta Médica">Consulta Médica</option>
+                            <option value="Vacinação">Vacinação</option>
+                            <option value="Curativo">Curativo</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary full-width">
+                        + Adicionar à Fila
+                    </button>
+
+                    <p id="form-message" class="message" role="status"></p>
+                </form>
+
+                <div class="privacy-notice">
+                    <strong>Aviso:</strong> protótipo acadêmico.
+                    Utilize apenas dados fictícios, nunca documentos reais
+                    de pacientes.
+                </div>
+            </section>
+
+            <!-- Painel de atendimento -->
+            <section class="panel">
+                <h2>Painel de chamada</h2>
+
+                <div class="current-patient">
+                    <span class="eyebrow">EM ATENDIMENTO</span>
+                    <h3 id="current-patient-name">
+                        Nenhum paciente chamado
+                    </h3>
+                    <p id="current-patient-type">
+                        Aguardando chamada
+                    </p>
+
+                    <button
+                        type="button"
+                        id="finish-button"
+                        class="btn btn-success"
+                        hidden
+                    >
+                        Finalizar atendimento
+                    </button>
+                </div>
+
+                <button
+                    type="button"
+                    id="call-next-button"
+                    class="btn btn-call full-width"
+                >
+                    Chamar Próximo Paciente →
+                </button>
+
+                <div class="section-heading">
+                    <h3>Fila de espera</h3>
+                    <span id="queue-count" class="counter">0 pacientes</span>
+                </div>
+
+                <div id="waiting-list" class="patient-list">
+                    <p class="empty-state">Nenhum paciente na fila.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Indicadores por categoria -->
+        <section class="panel indicators-panel">
+            <div class="section-heading">
+                <div>
+                    <h2>Atendimentos por categoria</h2>
+                    <p class="section-description">
+                        Quantidade de atendimentos finalizados hoje.
+                    </p>
+                </div>
+            </div>
+
+            <div id="category-indicators" class="category-grid"></div>
+        </section>
+
+        <!-- Histórico -->
+        <section class="panel">
+            <div class="section-heading">
+                <h2>Últimos atendimentos finalizados</h2>
+                <button id="export-button" class="btn btn-secondary" type="button">
+                    Exportar CSV
+                </button>
+            </div>
+
+            <div id="attendance-history" class="patient-list">
+                <p class="empty-state">
+                    Nenhum atendimento finalizado.
+                </p>
+            </div>
+        </section>
+
+        <!-- Ações administrativas -->
+        <section class="admin-actions">
+            <div>
+                <h2>Gerenciamento do dia</h2>
+                <p>Limpe a fila e os indicadores para iniciar novamente.</p>
+            </div>
+
+            <button id="reset-button" class="btn btn-danger" type="button">
+                Reiniciar o Dia
+            </button>
+        </section>
+
+        <footer>
+            <p>UBS Fácil — Projeto acadêmico desenvolvido com HTML, CSS e JavaScript.</p>
+            <p>Não utilize dados pessoais reais nesta versão demonstrativa.</p>
+        </footer>
+    </main>
+</body>
+</html>
